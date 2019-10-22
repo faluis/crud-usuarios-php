@@ -12,60 +12,62 @@
 <link rel="stylesheet" href="css/custom.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 <body>
-  <div class="container">
-    <div class="table.wrapper">
-      <div class="table-tittle">
-        <div class="row">
-          <div class ="col-sm-8"><h2>Listado de <b>Clientes</b></h2></div>
-          <div class="col-sm-4">
-            <a href="create.php" class="btn btn-info add-new"><i class="fa fa-plus"></i>Agregar cliente</a>
-          </div>
+    <div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8"><h2>Listado de  <b>Clientes</b></h2></div>
+                    <div class="col-sm-4">
+                        <a href="create.php" class="btn btn-info add-new"><i class="fa fa-plus"></i> Agregar cliente</a>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nombres</th>
+                        <th>Teléfono</th>
+                        <th>Dirección</th>
+			<th>E-mail</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                </tbody>
+            </table>
         </div>
-      </div>
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>Nombres</th>
-            <th>Telefono</th>
-            <th>Direccion</th>
-      <th>E-mail</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-
-        <tbody>
-
-        </tbody>
-      </table>
     </div>
-  </div>
-<?php
-include ('database.php');
-$clientes = new Database();
-$listado=$clientes->read();
-?>
-<?php
-while ($row=mysqli_fetch_object($listado)){
-  $id=$row->id;
-  $nombres=$row->nombres." ".$row->apellidos;
-  $telefono=$row->telefono;
-  $direccion=$row->direccion;
-  $email=$row->correo_electronico;
-?>
-<tr>
-<td><?php echo $nombres;?></td>
-<td><?php echo $telefono;?></td>
-<td><?php echo $direccion;?></td>
-<td><?php echo $email;?></td>
-<td>
-<a href="update.php?id=<?php echo $id;?>" class="edit" tittle="Editar" data-toggle="tooltip"><i class="material-icons">&#E254;</i></a>
-<a href="delete.php?id=<?php echo $id;?>" class="delete" tittle="Eliminar" data-toggle="tooltip"><i class="material-icons">&#E872;</i></a>
-</td>
-</tr>
-<?php
-}
- ?>
+
+    <?php
+    include ('database.php');
+      $clientes = new Database();
+      $listado=$clientes->read();
+    ?>
+    <?php
+      while ($row=mysqli_fetch_object($listado)){
+        $id=$row->id;
+        $nombres=$row->nombres." ".$row->apellidos;
+        $telefono=$row->telefono;
+        $direccion=$row->direccion;
+        $email=$row->correo_electronico;
+    ?>
+    <tr>
+    <td><?php echo $nombres;?></td>
+    <td><?php echo $telefono;?></td>
+    <td><?php echo $direccion;?></td>
+    <td><?php echo $email;?></td>
+    <td>
+    <a href="update.php?id=<?php echo $id;?>" class="edit" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+    <a href="delete.php?id=<?php echo $id;?>" class="delete" title="Eliminar" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+    </td>
+    </tr>
+    <?php
+    }
+    ?>
 </body>
 </html>
