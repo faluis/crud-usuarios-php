@@ -42,32 +42,5 @@
             </table>
         </div>
     </div>
-
-    <?php
-    include ('database.php');
-      $clientes = new Database();
-      $listado=$clientes->read();
-    ?>
-    <?php
-      while ($row=mysqli_fetch_object($listado)){
-        $id=$row->id;
-        $nombres=$row->nombres." ".$row->apellidos;
-        $telefono=$row->telefono;
-        $direccion=$row->direccion;
-        $email=$row->correo_electronico;
-    ?>
-    <tr>
-    <td><?php echo $nombres;?></td>
-    <td><?php echo $telefono;?></td>
-    <td><?php echo $direccion;?></td>
-    <td><?php echo $email;?></td>
-    <td>
-    <a href="update.php?id=<?php echo $id;?>" class="edit" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-    <a href="delete.php?id=<?php echo $id;?>" class="delete" title="Eliminar" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-    </td>
-    </tr>
-    <?php
-    }
-    ?>
 </body>
 </html>
